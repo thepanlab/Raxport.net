@@ -54,11 +54,11 @@ namespace Raxport
         }
         public void writeHeader()
         {
-            FT1writer.WriteLine("H\tExtractor\tRaxport V3.4");
+            FT1writer.WriteLine("H\tExtractor\tRaxport V3.5");
             FT1writer.WriteLine("H\tm/z\tIntensity\tResolution\tBaseline\tNoise\tCharge");
             FT1writer.WriteLine("H\tInstrument Model\t" + rawFile.GetInstrumentData().Model);
 
-            FT2writer.WriteLine("H\tExtractor\tRaxport V3.4");
+            FT2writer.WriteLine("H\tExtractor\tRaxport V3.5");
             FT2writer.WriteLine("H\tm/z\tIntensity\tResolution\tBaseline\tNoise\tCharge");
             FT2writer.WriteLine("H\tInstrument Model\t" + rawFile.GetInstrumentData().Model);
         }
@@ -102,7 +102,7 @@ namespace Raxport
             {
                 if (trailerLabels.Labels[i] == "Charge State:")
                 {
-                    chargeState = rawFile.GetTrailerExtraValue(currentScanNumber, i);
+                    chargeState = trailerLabels.Values[i].Trim();
                     break;
                 }
             }
